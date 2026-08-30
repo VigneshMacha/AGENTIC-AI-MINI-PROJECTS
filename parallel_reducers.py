@@ -72,3 +72,32 @@ def culture_node(state: AnalyzerState) -> dict:
         
     # Return a sub-dictionary under the EXACT SAME state key
     return {"safety_scores": {"cultural_insensitivity": score}}
+
+
+graph=StateGraph(AnalyzerState)
+
+graph.add_node("toxicity_node",toxicity_node)
+graph.add_node("copyright_node",copyright_node)
+graph.add_node("culture_node",culture_node)
+
+graph.add_edge(START,"toxicity_node")
+graph.add_edge(START,"copyright_node")
+graph.add_edge(START,"culture_node")
+
+graph.add_edge("toxicity_node",END)
+graph.add_edge("copyright_node",END)
+graph.add_edge("culture_node",END)
+
+
+app=graph.compile()
+
+text=input("\n\nEnter the raw_text:")
+initial_state={
+    "raw_text":text,
+    "safety_scores":{}
+}
+
+
+response=app.invoke(initial_state)
+
+print("Safety Scores are:\n",response["safety_scores"])
