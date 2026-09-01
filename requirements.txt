@@ -3,3 +3,11 @@ langchain
 langchain-groq
 python-dotenv
 rich
+
+langchain-community
+langchain-text-splitters
+langchain-huggingface
+sentence-transformers
+faiss-cpu
+pypdf
+
