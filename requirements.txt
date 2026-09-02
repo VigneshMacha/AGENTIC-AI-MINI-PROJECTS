@@ -1,8 +1,10 @@
 langgraph
 langchain
 langchain-groq
+langchain-mistralai
 python-dotenv
 rich
+langchain-tavily
 
 langchain-community
 langchain-text-splitters
